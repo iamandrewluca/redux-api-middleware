@@ -22,8 +22,9 @@ export default [
         presets: [
           [
             "@babel/preset-env", {
-              modules: false,
-              useBuiltIns: "usage"
+              useBuiltIns: "usage",
+              corejs: 3,
+              shippedProposals: true,
             }
           ]
         ]
@@ -40,8 +41,19 @@ export default [
     },
     external: pkgDeps,
     plugins: [
+      resolve(),
+      commonjs(),
       babel({
-        exclude: ['node_modules/**']
+        exclude: ['node_modules/**'],
+        presets: [
+          [
+            "@babel/preset-env", {
+              useBuiltIns: "usage",
+              corejs: 3,
+              shippedProposals: true,
+            }
+          ]
+        ]
       })
     ]
   }

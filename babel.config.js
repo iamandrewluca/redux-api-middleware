@@ -8,9 +8,11 @@ module.exports = function (api) {
     [
       "@babel/preset-env", {
         modules: envModules,
-        "useBuiltIns": "usage",
-        "targets": {
-          "node": nodeTarget
+        useBuiltIns: "usage",
+        corejs: 3,
+        shippedProposals: true,
+        targets: {
+          node: nodeTarget
         },
       }
     ]
